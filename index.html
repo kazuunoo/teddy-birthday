@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>For Teddy ♡</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f5e6d3;
+      color: #5a3d32;
+      font-family: Georgia, serif;
+      overflow-x: hidden;
+    }
+
+    /* little floating hearts */
+    .heart {
+      position: fixed;
+      color: #d9899b;
+      font-size: 18px;
+      animation: float 6s linear infinite;
+      opacity: 0.6;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(25deg);
+        opacity: 0;
+      }
+    }
+
+    .page {
+      width: 92%;
+      max-width: 850px;
+      margin: 35px auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* scrapbook paper */
+    .paper {
+      background: #fffaf3;
+      padding: 35px 25px;
+      margin-bottom: 30px;
+      border: 1px solid #e4cbbb;
+      box-shadow: 5px 7px 0px #c49b88;
+      position: relative;
+    }
+
+    .tape {
+      width: 90px;
+      height: 25px;
+      background: rgba(232, 181, 190, 0.65);
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+    }
+
+    .title {
+      text-align: center;
+      font-size: clamp(38px, 8vw, 65px);
+      color: #a95f70;
+      margin: 30px 0 10px;
+      font-weight: normal;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 19px;
+      color: #795548;
+      font-style: italic;
+    }
+
+    .tiny {
+      text-align: center;
+      margin-top: 25px;
+      color: #b87886;
+      font-size: 14px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #a95f70;
+      font-weight: normal;
+      font-size: 30px;
+    }
+
+    .doodle {
+      text-align: center;
+      font-size: 25px;
+      margin: 10px;
+    }
+
+    /* photos */
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-top: 25px;
+    }
+
+    .photo {
+      background: white;
+      padding: 10px 10px 25px;
+      box-shadow: 2px 4px 8px rgba(80, 50, 40, 0.2);
+      transform: rotate(-2deg);
+    }
+
+    .photo:nth-child(2) {
+      transform: rotate(2deg);
+    }
+
+    .photo:nth-child(3) {
+      transform: rotate(1deg);
+    }
+
+    .photo:nth-child(4) {
+      transform: rotate(-3deg);
+    }
+
+    .photo img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      background: #ead4c7;
+      display: block;
+    }
+
+    .caption {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #795548;
+    }
+
+    /* letter */
+    .letter {
+      background: #fdf1dc;
+      border: 1px dashed #c9977f;
+      padding: 25px;
+      line-height: 1.8;
+      font-size: 17px;
+      position: relative;
+    }
+
+    .letter::before {
+      content: "♡";
+      position: absolute;
+      top: 8px;
+      right: 15px;
+      color: #d9899b;
+      font-size: 25px;
+    }
+
+    /* little notes */
+    .notes {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .note {
+      background: #f2c9d1;
+      padding: 18px;
+      width: 180px;
+      min-height: 100px;
+      box-shadow: 3px 4px 0px #b98b7c;
+      transform: rotate(-2deg);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .note:nth-child(2) {
+      background: #e7d0b9;
+      transform: rotate(2deg);
+    }
+
+    .note:nth-child(3) {
+      background: #f4dce1;
+      transform: rotate(-1deg);
+    }
+
+    /* music */
+    .music {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .music a {
+      display: inline-block;
+      background: #a95f70;
+      color: white;
+      text-decoration: none;
+      padding: 13px 22px;
+      border-radius: 25px;
+      transition: 0.2s;
+    }
+
+    .music a:hover {
+      transform: scale(1.05);
+      background: #8e4e5e;
+    }
+
+    /* ending */
+    .ending {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .ending h2 {
+      font-size: 30px;
+    }
+
+    .signature {
+      margin-top: 25px;
+      color: #a95f70;
+      font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+      .photos {
+        grid-template-columns: 1fr;
+      }
+
+      .paper {
+        padding: 30px 18px;
+      }
+
+      .title {
+        font-size: 42px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- floating decorations -->
+  <div class="heart" style="left:10%; animation-delay:0s;">♡</div>
+  <div class="heart" style="left:25%; animation-delay:2s;">♥</div>
+  <div class="heart" style="left:45%; animation-delay:4s;">♡</div>
+  <div class="heart" style="left:70%; animation-delay:1s;">♥</div>
+  <div class="heart" style="left:88%; animation-delay:3s;">♡</div>
+
+  <main class="page">
+
+    <!-- COVER -->
+    <section class="paper">
+      <div class="tape"></div>
+
+      <div class="doodle">♡ ⋆｡°✩ 🧸 ✩°｡⋆ ♡</div>
+
+      <h1 class="title">
+        Happiest Birthday<br>
+        My Teddy !!!
+      </h1>
+
+      <p class="subtitle">
+        a tiny little scrapbook made just for you ♡
+      </p>
+
+      <p class="tiny">
+        August 30 · 2026
+      </p>
+    </section>
+
+
+    <!-- FOR TEDDY -->
+    <section class="paper">
+      <div class="tape"></div>
+
+      <h2>♡ for teddy ♡</h2>
+
+      <div class="doodle">✿ ───── ♡ ───── ✿</div>
+
+      <p style="text-align:center; line-height:1.8;">
+        I wanted to make you a little corner of the internet
+        that is just yours.
+        <br><br>
+        So here's a tiny collection of memories,
+        thoughts, and little pieces of my heart
+        that I wanted you to have on your birthday.
+      </p>
+    </section>
+
+
+    <!-- PHOTOS -->
+    <section class="paper">
+      <div class="tape"></div>
+
+      <h2>little pieces of us ♡</h2>
+
+      <div class="photos">
+
+        <div class="photo">
+          <img src="photo1.jpg" alt="A memory">
+          <div class="caption">a little memory ♡</div>
+        </div>
+
+        <div class="photo">
+          <img src="photo2.jpg" alt="A memory">
+          <div class="caption">one of my favorites</div>
+        </div>
+
+        <div class="photo">
+          <img src="photo3.jpg" alt="A memory">
+          <div class="caption">♡ you & me ♡</div>
+        </div>
+
+        <div class="photo">
+          <img src="photo4.jpg" alt="A memory">
+          <div class="caption">another little moment</div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- LOVE LETTER -->
+    <section class="paper">
+      <div class="tape"></div>
+
+      <h2>a letter for you 💌</h2>
+
+      <div class="letter">
+
+        Dear Teddy,
+
+        <br><br>
+
+        Happy birthday, my Teddy !!! ♡
+
+        <br><br>
+
+        I don't think I could ever put everything I feel for you
+        into one little letter, but I still wanted to give it a try.
+
+        <br><br>
+
+        I'm really grateful for all the little moments we've shared,
+        the conversations, the laughs, the silly things,
+        and even the moments that weren't so easy.
+
+        <br><br>
+
+        You mean so much to me, and I hope you always remember
+        that you are loved and appreciated.
+
+        <br><br>
+
+        I hope this new year of your life brings you softer days,
+        happier moments, and plenty of reasons to smile.
+
+        <br><br>
+
+        And selfishly, I hope I get to be there for some of them. ♡
+
+        <br><br>
+
+        Happy birthday, Teddy.
+        I love you. 🧸
+
+      </div>
+    </section>
+
+
+    <!-- LITTLE NOTES -->
+    <section class="paper">
+      <div class="tape"></div>
+
+      <h2>little things i love ♡</h2>
+
+      <div class="notes">
+
+        <div class="note">
+          your silly little personality ♡
+        </div>
+
+        <div class="note">
+          the way you make me smile
+        </div>
+
+        <div class="note">
+          simply... you being you 🧸
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- MUSIC -->
+    <section class="paper">
+      <div class="tape"></div>
+
+      <h2>our little song 🎧</h2>
+
+      <div class="doodle">♫ ♡ ♫</div>
+
+      <p style="text-align:center;">
+        because this one reminds me of you.
+      </p>
+
+      <div class="music">
+
+        <!-- Replace the # with your official song link -->
+        <a href="#" target="_blank">
+          ♫ All I Want Is You — Miguel ♫
+        </a>
+
+      </div>
+    </section>
+
+
+    <!-- ENDING -->
+    <section class="paper ending">
+
+      <div class="doodle">♡ 🧸 ♡</div>
+
+      <h2>
+        wishing for more birthday<br>
+        celebrations together 😽
+      </h2>
+
+      <p class="signature">
+        made with lots and lots of love ♡
+      </p>
+
+      <div class="doodle">
+        ⋆｡°✩ ♡ ✩°｡⋆
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
