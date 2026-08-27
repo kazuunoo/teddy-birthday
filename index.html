@@ -25,23 +25,22 @@ body {
   background-size: 18px 18px;
   color: #62463b;
   font-family: 'Quicksand', sans-serif;
-  overflow-x: hidden;
 }
 
 /* =========================
-   GENERAL
+   SCRAPBOOK
 ========================= */
 
 .scrapbook {
   width: min(92%, 900px);
   margin: auto;
-  padding: 45px 0;
+  padding: 35px 0;
 }
 
 .page {
   position: relative;
   background: #fff8ee;
-  margin: 45px 0;
+  margin: 40px 0;
   padding: 55px 35px;
   min-height: 520px;
   box-shadow: 7px 9px 0 #b88e7b;
@@ -50,28 +49,15 @@ body {
 }
 
 .page:nth-child(even) {
-  transform: rotate(0.5deg);
+  transform: rotate(0.4deg);
 }
 
 .page:nth-child(odd) {
-  transform: rotate(-0.5deg);
+  transform: rotate(-0.4deg);
 }
-
-.paper-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: #ecd5c6;
-  opacity: 0.7;
-}
-
-.paper-line.one { top: 120px; }
-.paper-line.two { top: 150px; }
-.paper-line.three { top: 180px; }
 
 /* =========================
-   SCRAPBOOK DECORATIONS
+   DECORATIONS
 ========================= */
 
 .sticker {
@@ -98,7 +84,7 @@ body {
   position: absolute;
   width: 105px;
   height: 28px;
-  background: rgba(225, 165, 174, 0.65);
+  background: rgba(225,165,174,.65);
   z-index: 5;
 }
 
@@ -112,7 +98,7 @@ body {
   top: 18px;
   right: 12%;
   transform: rotate(5deg);
-  background: rgba(214, 182, 142, 0.6);
+  background: rgba(214,182,142,.6);
 }
 
 .label {
@@ -151,13 +137,18 @@ body {
 }
 
 @keyframes bob {
-  0%, 100% { transform: rotate(-4deg) translateY(0); }
-  50% { transform: rotate(4deg) translateY(-8px); }
+  0%,100% {
+    transform: rotate(-4deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(4deg) translateY(-8px);
+  }
 }
 
 .cover h1 {
   font-family: 'Patrick Hand', cursive;
-  font-size: clamp(55px, 11vw, 95px);
+  font-size: clamp(55px,11vw,95px);
   line-height: .9;
   color: #a65f71;
   margin: 20px 0;
@@ -178,7 +169,7 @@ body {
 }
 
 /* =========================
-   HEADINGS
+   TEXT
 ========================= */
 
 h2 {
@@ -203,20 +194,20 @@ h2 {
 }
 
 /* =========================
-   PHOTO SCRAPBOOK
+   PHOTOS
 ========================= */
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2,1fr);
   gap: 35px;
   margin-top: 40px;
 }
 
 .photo-card {
-  background: #fff;
+  background: white;
   padding: 12px 12px 25px;
-  box-shadow: 3px 5px 10px rgba(80, 50, 40, .18);
+  box-shadow: 3px 5px 10px rgba(80,50,40,.18);
   transition: .3s ease;
 }
 
@@ -243,7 +234,7 @@ h2 {
 
 .photo-card img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1/1;
   object-fit: cover;
   display: block;
   background: #ead4c7;
@@ -392,6 +383,7 @@ h2 {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -447,19 +439,87 @@ h2 {
 }
 
 /* =========================
+   MYSTERY GIFT
+========================= */
+
+.mystery-gift {
+  display: block;
+  width: 250px;
+  margin: 45px auto;
+  text-decoration: none;
+  color: #62463b;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.mystery-gift:hover {
+  transform: translateY(-8px) rotate(1deg);
+}
+
+.gift-box {
+  width: 180px;
+  height: 145px;
+  background: #c99578;
+  margin: auto;
+  position: relative;
+  box-shadow: 6px 7px 0 #9d7163;
+  border: 3px solid #8e6255;
+}
+
+.ribbon-vertical {
+  position: absolute;
+  width: 28px;
+  height: 100%;
+  background: #d98296;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ribbon-horizontal {
+  position: absolute;
+  width: 100%;
+  height: 27px;
+  background: #d98296;
+  top: 42%;
+}
+
+.bow {
+  position: absolute;
+  top: -43px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 55px;
+}
+
+.gift-label {
+  position: absolute;
+  background: #fff3df;
+  padding: 7px 13px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 18px;
+  left: 50%;
+  top: 58%;
+  transform: translate(-50%,-50%) rotate(-2deg);
+  white-space: nowrap;
+}
+
+.mystery-text {
+  margin-top: 32px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 27px;
+  color: #a65f71;
+}
+
+/* =========================
    ENDING
 ========================= */
 
 .ending {
   text-align: center;
-  min-height: 450px;
+  min-height: 520px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.ending h2 {
-  font-size: clamp(38px, 7vw, 58px);
 }
 
 .signature {
@@ -472,7 +532,7 @@ h2 {
    MOBILE
 ========================= */
 
-@media (max-width: 650px) {
+@media (max-width:650px) {
 
   .scrapbook {
     width: 94%;
@@ -512,254 +572,282 @@ h2 {
 
 <div class="scrapbook">
 
-  <!-- ================= COVER ================= -->
+<!-- ================= COVER ================= -->
 
-  <section class="page cover">
+<section class="page cover">
 
-    <div class="tape one"></div>
+  <div class="tape one"></div>
 
-    <div class="sticker flower" style="top:35px; left:30px;">✿</div>
-    <div class="sticker star" style="top:70px; right:35px;">☆</div>
-    <div class="sticker flower" style="bottom:40px; left:35px;">♡</div>
+  <div class="sticker flower" style="top:35px;left:30px;">✿</div>
+  <div class="sticker star" style="top:70px;right:35px;">☆</div>
+  <div class="sticker flower" style="bottom:40px;left:35px;">♡</div>
 
-    <div class="bear">🧸</div>
+  <div class="bear">🧸</div>
 
-    <h1>
-      Happiest Birthday<br>
-      My Teddy
-    </h1>
+  <h1>
+    Happiest Birthday<br>
+    My Teddy
+  </h1>
 
-    <p>hope you'll love this :DD</p>
+  <p>hope you'll love this :DD</p>
 
-    <p class="date">☆ 08 · 30 ☆</p>
+  <p class="date">☆ 08 · 30 ☆</p>
 
-  </section>
-
-
-  <!-- ================= FOR TEDDY ================= -->
-
-  <section class="page">
-
-    <div class="tape two"></div>
-    <div class="sticker star" style="bottom:30px; right:30px;">☆</div>
-
-    <div class="label">a little something :3</div>
-
-    <h2>For Teddy</h2>
-
-    <p class="body-text">
-
-      We might be on opposite sides of the world,
-      but I still want to make your birthday a little more special.
-
-      <br><br>
-
-      So here's a tiny collection of memories,
-      thoughts, and little pieces of my heart
-      that I wanted you to have on your birthday.
-
-    </p>
-
-  </section>
+</section>
 
 
-  <!-- ================= PHOTOS ================= -->
+<!-- ================= FOR TEDDY ================= -->
 
-  <section class="page">
+<section class="page">
 
-    <div class="tape one"></div>
+  <div class="tape two"></div>
 
-    <h2>little pieces of us (˶ ˘ ³˘)ˆᵕ ˆ˶)</h2>
+  <div class="sticker star" style="bottom:30px;right:30px;">☆</div>
 
-    <div class="photo-grid">
+  <div class="label">a little something</div>
 
-      <div class="photo-card">
-        <img src="photo1.jpg" alt="Our first matching profile pictures">
-        <div class="caption">
-          throwback to our first matching pfp
-        </div>
+  <h2>For Teddy</h2>
+
+  <p class="body-text">
+
+    We might be on another side of the world,
+    but I still want to make your birthday a little more special.
+
+    <br><br>
+
+    So here's a tiny collection of memories,
+    thoughts, and little pieces of my heart
+    that I wanted you to have on your birthday :3
+
+  </p>
+
+</section>
+
+
+<!-- ================= PHOTOS ================= -->
+
+<section class="page">
+
+  <div class="tape one"></div>
+
+  <div class="sticker flower" style="top:30px;right:30px;">♡</div>
+
+  <h2>little pieces of us (˶ ˘ ³˘)ˆᵕ ˆ˶)</h2>
+
+  <div class="photo-grid">
+
+    <div class="photo-card">
+      <img src="photo1.jpg" alt="Our first matching pfp">
+      <div class="caption">
+        throwback to our first matching pfp
       </div>
+    </div>
 
-      <div class="photo-card">
-        <img src="photo2.jpg" alt="Teddy copying my pose">
-        <div class="caption">
-          my fav pic of u ofc
-        </div>
+    <div class="photo-card">
+      <img src="photo2.jpg" alt="Teddy">
+      <div class="caption">
+        my fav pic of u ofc
       </div>
+    </div>
 
-      <div class="photo-card">
-        <img src="photo3.jpg" alt="A drawing of us">
-        <div class="caption">
-          a piece of u and me
-        </div>
+    <div class="photo-card">
+      <img src="photo3.jpg" alt="A drawing of us">
+      <div class="caption">
+        a piece of u and me
       </div>
+    </div>
 
-      <div class="photo-card">
-        <img src="photo4.jpg" alt="A little moment together">
-        <div class="caption">
-          little teddy
-        </div>
+    <div class="photo-card">
+      <img src="photo4.jpg" alt="A little moment">
+      <div class="caption">
+        little teddy
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= TOP 3 ================= -->
+
+<section class="page">
+
+  <div class="sticker star" style="top:30px;left:35px;">☆</div>
+  <div class="sticker flower" style="bottom:30px;right:35px;">♡</div>
+
+  <h2>Top 3 things I love about you (˶˃𐃷˂˶)</h2>
+
+  <div class="notes">
+
+    <div class="note">
+      how you're<br>
+      so softspoken
+    </div>
+
+    <div class="note">
+      how much of a<br>
+      yapper and nerdy<br>
+      you can get
+    </div>
+
+    <div class="note">
+      simply...<br>
+      you being you 🧸
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= LETTER ================= -->
+
+<section class="page letter-area">
+
+  <div class="tape two"></div>
+
+  <div class="sticker flower" style="top:30px;left:25px;">♡</div>
+
+  <h2>a little letter for you 💌</h2>
+
+  <p class="click-note">
+    there's something inside...<br>
+    tap the envelope ⊹ ࣪ ˖𑁤
+  </p>
+
+  <div class="envelope" id="envelope" onclick="openLetter()">
+    <div class="envelope-text">For Teddy</div>
+  </div>
+
+  <div class="letter" id="letter">
+
+    <strong>Dear Teddy,</strong>
+
+    <br><br>
+
+    Happiest birthday, my Teddy !!! ◝(ᵔᗜᵔ)◜
+
+    <br><br>
+
+    I don't think I could ever fit everything I feel for you
+    into one little letter, but I still wanted to give it a try.
+
+    <br><br>
+
+    I'm really grateful for all the moments we've shared,
+    the conversations, the laughs, the silly things,
+    and everything in between.
+
+    <br><br>
+
+    I hope this new year of your life brings you
+    softer days, happier moments, and plenty of reasons to smile.
+
+    <br><br>
+
+    And selfishly, I hope I get to be there for some of them ( >؎ ❛ ) .ᐟ
+
+    <br><br>
+
+    Happy birthday again mi amor !!
+
+    <br>
+
+    I love you before, now and always<333
+
+    <br><br>
+
+    <em>— from Angela, with lots of love ⸜(｡˃ ᵕ ˂ )⸝</em>
+
+    <button class="letter-close" onclick="closeLetter(event)">
+      fold the letter ⊹ ࣪ ˖𑁤
+      
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SONG ================= -->
+
+<section class="page">
+
+  <div class="tape one"></div>
+
+  <div class="sticker star" style="top:30px;right:35px;">☆</div>
+
+  <h2>your song ♬⋆.˚</h2>
+
+  <p class="body-text">
+    because this song reminds me of you.
+  </p>
+
+  <div class="song-box">
+
+    <h3>All I Want Is You</h3>
+
+    <p>— Miguel ♡</p>
+
+    <a
+      class="song-button"
+      href="https://open.spotify.com/playlist/3oOKPTAcGuvMIyA5C7nq32?si=hirM-kOHTV6uhK1ivGMeqA&utm_source=copy-link"
+      target="_blank"
+    >
+      ♫ listen to it ♫
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FINAL SURPRISE ================= -->
+
+<section class="page ending">
+
+  <div class="sticker flower" style="top:30px;left:35px;">✿</div>
+  <div class="sticker star" style="bottom:35px;right:35px;">☆</div>
+
+  <div class="label">one last thing</div>
+
+  <h2>one last thing...</h2>
+
+  <p class="body-text">
+    I left you a little something.
+  </p>
+
+  <a
+    href="https://thebouquet.me/v/8c60fa65-8eb1-4da6-be84-d8c2039fda84"
+    target="_blank"
+    class="mystery-gift"
+  >
+
+    <div class="gift-box">
+
+      <div class="ribbon-vertical"></div>
+      <div class="ribbon-horizontal"></div>
+
+      <div class="bow">🎀</div>
+
+      <div class="gift-label">
+        for my hubby
       </div>
 
     </div>
 
-  </section>
-
-
-  <!-- ================= TOP 3 ================= -->
-
-  <section class="page">
-
-    <div class="sticker star" style="top:30px; left:35px;">☆</div>
-    <div class="sticker flower" style="bottom:30px; right:35px;">♡</div>
-
-    <h2>Top 3 things I love about you (˶˃𐃷˂˶)</h2>
-
-    <div class="notes">
-
-      <div class="note">
-        how you're<br>
-        so softspoken
-      </div>
-
-      <div class="note">
-        how much of a<br>
-        yapper and nerdy<br>
-        you can get
-      </div>
-
-      <div class="note">
-        simply...<br>
-        you being you 🧸
-      </div>
-
+    <div class="mystery-text">
+      what could it be? :pp
     </div>
 
-  </section>
+  </a>
 
+  <p class="signature">
+    wishing for more birthday celebrations together 😽
+  </p>
 
-  <!-- ================= LETTER ================= -->
-
-  <section class="page letter-area">
-
-    <div class="tape two"></div>
-
-    <div class="sticker flower" style="top:30px; left:25px;">✮</div>
-
-    <h2>a little letter for you 💌</h2>
-
-    <p class="click-note">
-      there's something inside...<br>
-      tap the envelope ⊹ ࣪ ˖𑁤
-    </p>
-
-    <div class="envelope" id="envelope" onclick="openLetter()">
-      <div class="envelope-text">For Teddy</div>
-    </div>
-
-    <div class="letter" id="letter">
-
-      <strong>My Dearest Teddy,</strong>
-
-      <br><br>
-
-      Happiest birthday, my Teddy !!! ◝(ᵔᗜᵔ)◜
-
-      <br><br>
-
-      I don't think I could ever fit everything I feel for you
-      into one little letter, but I still wanted to give it a try.
-
-      <br><br>
-
-      I'm really grateful for all the moments we've shared,
-      the conversations, the laughs, the silly things,
-      and everything in between.
-
-      <br><br>
-
-      I hope this new year of your life brings you
-      softer days, happier moments, and plenty of reasons to smile.
-
-      <br><br>
-
-      And selfishly, I hope I get to be there for some of them ( >؎ ❛ ) .ᐟ
-
-      <br><br>
-
-      Happy birthday, Teddy.
-
-      <br>
-
-      I love you before, now and always<333
-
-      <br><br>
-
-      <em>— from angela, with lots of love ♡</em>
-
-      <button class="letter-close" onclick="closeLetter(event)">
-        fold the letter ⊹ ࣪ ˖𑁤
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= SONG ================= -->
-
-  <section class="page">
-
-    <div class="tape one"></div>
-
-    <div class="sticker star" style="top:30px; right:35px;">☆</div>
-
-    <h2>your song ⋆ ݁♫ .</h2>
-
-    <p class="body-text">
-      because this song reminds me of you.
-    </p>
-
-    <div class="song-box">
-
-      <h3>All I Want Is You</h3>
-
-      <p>— Miguel ♡</p>
-
-      <!-- Replace # with your Spotify/YouTube link -->
-      <a
-        class="song-button"
-        href="https://open.spotify.com/track/5VA4Ispp52EA1sOqzMz3Av?si=XSeF2fZpStGrOGAB-csb6w&utm_source=copy-link"
-        target="_blank"
-      >
-        ♫ listen to it ♫
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= END ================= -->
-
-  <section class="page ending">
-
-    <div class="sticker flower" style="top:30px; left:35px;">✿</div>
-    <div class="sticker star" style="bottom:35px; left:35px;">☆</div>
-    <div class="sticker flower" style="bottom:30px; right:35px;">♡</div>
-
-    <div class="bear">🧸</div>
-
-    <h2>
-      wishing for more birthday<br>
-      celebrations together 😽
-    </h2>
-
-    <p class="signature">
-      made with lots and lots of love ♡
-    </p>
-
-  </section>
+</section>
 
 </div>
 
@@ -767,12 +855,14 @@ h2 {
 <script>
 
 function openLetter() {
+
   const envelope = document.getElementById("envelope");
   const letter = document.getElementById("letter");
 
   envelope.classList.add("open");
 
   setTimeout(() => {
+
     letter.classList.add("show");
 
     letter.scrollIntoView({
@@ -780,7 +870,8 @@ function openLetter() {
       block: "center"
     });
 
-  }, 500);
+  },500);
+
 }
 
 
@@ -795,7 +886,8 @@ function closeLetter(event) {
 
   setTimeout(() => {
     envelope.classList.remove("open");
-  }, 300);
+  },300);
+
 }
 
 </script>
