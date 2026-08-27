@@ -1,456 +1,810 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>For Teddy ♡</title>
+<title>For Teddy ♡</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@400;500;600;700&family=Special+Elite&display=swap');
 
-    body {
-      margin: 0;
-      background: #f5e6d3;
-      color: #5a3d32;
-      font-family: Georgia, serif;
-      overflow-x: hidden;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    /* little floating hearts */
-    .heart {
-      position: fixed;
-      color: #d9899b;
-      font-size: 18px;
-      animation: float 6s linear infinite;
-      opacity: 0.6;
-      z-index: 0;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      20% {
-        opacity: 0.7;
-      }
-      100% {
-        transform: translateY(-10vh) rotate(25deg);
-        opacity: 0;
-      }
-    }
+body {
+  margin: 0;
+  background:
+    radial-gradient(#d8b9a8 1px, transparent 1px),
+    #f3dfd0;
+  background-size: 18px 18px;
+  color: #62463b;
+  font-family: 'Quicksand', sans-serif;
+  overflow-x: hidden;
+}
 
-    .page {
-      width: 92%;
-      max-width: 850px;
-      margin: 35px auto;
-      position: relative;
-      z-index: 1;
-    }
+/* =========================
+   GENERAL
+========================= */
 
-    /* scrapbook paper */
-    .paper {
-      background: #fffaf3;
-      padding: 35px 25px;
-      margin-bottom: 30px;
-      border: 1px solid #e4cbbb;
-      box-shadow: 5px 7px 0px #c49b88;
-      position: relative;
-    }
+.scrapbook {
+  width: min(92%, 900px);
+  margin: auto;
+  padding: 45px 0;
+}
 
-    .tape {
-      width: 90px;
-      height: 25px;
-      background: rgba(232, 181, 190, 0.65);
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%) rotate(-2deg);
-    }
+.page {
+  position: relative;
+  background: #fff8ee;
+  margin: 45px 0;
+  padding: 55px 35px;
+  min-height: 520px;
+  box-shadow: 7px 9px 0 #b88e7b;
+  border: 2px solid #e7c9b6;
+  overflow: hidden;
+}
 
-    .title {
-      text-align: center;
-      font-size: clamp(38px, 8vw, 65px);
-      color: #a95f70;
-      margin: 30px 0 10px;
-      font-weight: normal;
-    }
+.page:nth-child(even) {
+  transform: rotate(0.5deg);
+}
 
-    .subtitle {
-      text-align: center;
-      font-size: 19px;
-      color: #795548;
-      font-style: italic;
-    }
+.page:nth-child(odd) {
+  transform: rotate(-0.5deg);
+}
 
-    .tiny {
-      text-align: center;
-      margin-top: 25px;
-      color: #b87886;
-      font-size: 14px;
-    }
+.paper-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #ecd5c6;
+  opacity: 0.7;
+}
 
-    h2 {
-      text-align: center;
-      color: #a95f70;
-      font-weight: normal;
-      font-size: 30px;
-    }
+.paper-line.one { top: 120px; }
+.paper-line.two { top: 150px; }
+.paper-line.three { top: 180px; }
 
-    .doodle {
-      text-align: center;
-      font-size: 25px;
-      margin: 10px;
-    }
+/* =========================
+   SCRAPBOOK DECORATIONS
+========================= */
 
-    /* photos */
-    .photos {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
-      margin-top: 25px;
-    }
+.sticker {
+  position: absolute;
+  z-index: 3;
+  user-select: none;
+}
 
-    .photo {
-      background: white;
-      padding: 10px 10px 25px;
-      box-shadow: 2px 4px 8px rgba(80, 50, 40, 0.2);
-      transform: rotate(-2deg);
-    }
+.flower {
+  color: #c7798b;
+  font-size: 30px;
+}
 
-    .photo:nth-child(2) {
-      transform: rotate(2deg);
-    }
+.star {
+  color: #b87865;
+  font-size: 24px;
+}
 
-    .photo:nth-child(3) {
-      transform: rotate(1deg);
-    }
+.bear {
+  font-size: 42px;
+}
 
-    .photo:nth-child(4) {
-      transform: rotate(-3deg);
-    }
+.tape {
+  position: absolute;
+  width: 105px;
+  height: 28px;
+  background: rgba(225, 165, 174, 0.65);
+  z-index: 5;
+}
 
-    .photo img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      background: #ead4c7;
-      display: block;
-    }
+.tape.one {
+  top: 18px;
+  left: 45%;
+  transform: rotate(-4deg);
+}
 
-    .caption {
-      text-align: center;
-      margin-top: 10px;
-      font-size: 14px;
-      color: #795548;
-    }
+.tape.two {
+  top: 18px;
+  right: 12%;
+  transform: rotate(5deg);
+  background: rgba(214, 182, 142, 0.6);
+}
 
-    /* letter */
-    .letter {
-      background: #fdf1dc;
-      border: 1px dashed #c9977f;
-      padding: 25px;
-      line-height: 1.8;
-      font-size: 17px;
-      position: relative;
-    }
+.label {
+  display: inline-block;
+  background: #ead2b9;
+  padding: 6px 12px;
+  font-family: 'Special Elite', monospace;
+  font-size: 12px;
+  transform: rotate(-2deg);
+  margin-bottom: 18px;
+}
 
-    .letter::before {
-      content: "♡";
-      position: absolute;
-      top: 8px;
-      right: 15px;
-      color: #d9899b;
-      font-size: 25px;
-    }
+/* =========================
+   COVER
+========================= */
 
-    /* little notes */
-    .notes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 25px;
-    }
+.cover {
+  text-align: center;
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background:
+    linear-gradient(rgba(255,248,238,.88), rgba(255,248,238,.88)),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 31px,
+      #ead7c9 32px
+    );
+}
 
-    .note {
-      background: #f2c9d1;
-      padding: 18px;
-      width: 180px;
-      min-height: 100px;
-      box-shadow: 3px 4px 0px #b98b7c;
-      transform: rotate(-2deg);
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.cover .bear {
+  animation: bob 3s ease-in-out infinite;
+}
 
-    .note:nth-child(2) {
-      background: #e7d0b9;
-      transform: rotate(2deg);
-    }
+@keyframes bob {
+  0%, 100% { transform: rotate(-4deg) translateY(0); }
+  50% { transform: rotate(4deg) translateY(-8px); }
+}
 
-    .note:nth-child(3) {
-      background: #f4dce1;
-      transform: rotate(-1deg);
-    }
+.cover h1 {
+  font-family: 'Patrick Hand', cursive;
+  font-size: clamp(55px, 11vw, 95px);
+  line-height: .9;
+  color: #a65f71;
+  margin: 20px 0;
+  font-weight: normal;
+}
 
-    /* music */
-    .music {
-      text-align: center;
-      margin-top: 25px;
-    }
+.cover p {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 27px;
+  color: #795548;
+}
 
-    .music a {
-      display: inline-block;
-      background: #a95f70;
-      color: white;
-      text-decoration: none;
-      padding: 13px 22px;
-      border-radius: 25px;
-      transition: 0.2s;
-    }
+.date {
+  margin-top: 25px;
+  font-family: 'Special Elite', monospace !important;
+  font-size: 14px !important;
+  color: #a97967 !important;
+}
 
-    .music a:hover {
-      transform: scale(1.05);
-      background: #8e4e5e;
-    }
+/* =========================
+   HEADINGS
+========================= */
 
-    /* ending */
-    .ending {
-      text-align: center;
-      padding: 40px 20px;
-    }
+h2 {
+  font-family: 'Patrick Hand', cursive;
+  text-align: center;
+  color: #a65f71;
+  font-size: 48px;
+  font-weight: normal;
+  margin: 0 0 30px;
+}
 
-    .ending h2 {
-      font-size: 30px;
-    }
+.center {
+  text-align: center;
+}
 
-    .signature {
-      margin-top: 25px;
-      color: #a95f70;
-      font-style: italic;
-    }
+.body-text {
+  max-width: 650px;
+  margin: auto;
+  font-size: 17px;
+  line-height: 2;
+  text-align: center;
+}
 
-    @media (max-width: 600px) {
-      .photos {
-        grid-template-columns: 1fr;
-      }
+/* =========================
+   PHOTO SCRAPBOOK
+========================= */
 
-      .paper {
-        padding: 30px 18px;
-      }
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 35px;
+  margin-top: 40px;
+}
 
-      .title {
-        font-size: 42px;
-      }
-    }
-  </style>
+.photo-card {
+  background: #fff;
+  padding: 12px 12px 25px;
+  box-shadow: 3px 5px 10px rgba(80, 50, 40, .18);
+  transition: .3s ease;
+}
+
+.photo-card:hover {
+  transform: rotate(0deg) scale(1.04) !important;
+  z-index: 4;
+}
+
+.photo-card:nth-child(1) {
+  transform: rotate(-4deg);
+}
+
+.photo-card:nth-child(2) {
+  transform: rotate(3deg);
+}
+
+.photo-card:nth-child(3) {
+  transform: rotate(2deg);
+}
+
+.photo-card:nth-child(4) {
+  transform: rotate(-3deg);
+}
+
+.photo-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  background: #ead4c7;
+}
+
+.caption {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 13px;
+  color: #765247;
+}
+
+/* =========================
+   TOP 3
+========================= */
+
+.notes {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 45px;
+}
+
+.note {
+  width: 210px;
+  min-height: 180px;
+  padding: 25px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 22px;
+  background: #f3cbd3;
+  box-shadow: 4px 5px 0 #b99182;
+  transition: .3s ease;
+}
+
+.note:nth-child(2) {
+  background: #e8d0b5;
+  transform: rotate(3deg);
+}
+
+.note:nth-child(3) {
+  background: #f5dfe2;
+  transform: rotate(-3deg);
+}
+
+.note:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.03);
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-area {
+  text-align: center;
+}
+
+.envelope {
+  width: 280px;
+  height: 190px;
+  background: #d59aaa;
+  margin: 60px auto 20px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 5px 7px 0 #a87c70;
+  transition: .3s ease;
+}
+
+.envelope:hover {
+  transform: translateY(-5px);
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-top: 105px solid #e8b8c2;
+  transform-origin: top;
+  transition: .8s ease;
+  z-index: 3;
+}
+
+.envelope::after {
+  content: "♡";
+  position: absolute;
+  top: 73px;
+  left: 120px;
+  font-size: 42px;
+  color: #fff8ee;
+  z-index: 5;
+}
+
+.envelope.open::before {
+  transform: rotateX(180deg);
+}
+
+.envelope-text {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  color: white;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 23px;
+}
+
+.click-note {
+  font-family: 'Patrick Hand', cursive;
+  color: #a65f71;
+  font-size: 20px;
+}
+
+.letter {
+  display: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #fff6e7,
+      #fff6e7 31px,
+      #e8d8ca 32px
+    );
+  padding: 35px;
+  margin: 35px auto 0;
+  max-width: 680px;
+  text-align: left;
+  line-height: 2;
+  font-size: 16px;
+  box-shadow: 3px 5px 0 #c3a08e;
+  animation: appear .8s ease;
+}
+
+.letter.show {
+  display: block;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.letter-close {
+  display: block;
+  margin: 25px auto 0;
+  border: none;
+  background: #a65f71;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* =========================
+   SONG
+========================= */
+
+.song-box {
+  max-width: 550px;
+  margin: 45px auto 0;
+  padding: 30px;
+  background: #f4e0d1;
+  transform: rotate(-1deg);
+  box-shadow: 4px 5px 0 #b58b7b;
+  text-align: center;
+}
+
+.song-box h3 {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 32px;
+  color: #a65f71;
+  margin: 0;
+}
+
+.song-button {
+  display: inline-block;
+  margin-top: 22px;
+  background: #a65f71;
+  color: white;
+  text-decoration: none;
+  padding: 13px 25px;
+  border-radius: 30px;
+  transition: .2s;
+}
+
+.song-button:hover {
+  transform: scale(1.06);
+}
+
+/* =========================
+   ENDING
+========================= */
+
+.ending {
+  text-align: center;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ending h2 {
+  font-size: clamp(38px, 7vw, 58px);
+}
+
+.signature {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 24px;
+  color: #a65f71;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+  .scrapbook {
+    width: 94%;
+    padding: 20px 0;
+  }
+
+  .page {
+    padding: 45px 20px;
+    margin: 30px 0;
+  }
+
+  .cover {
+    min-height: 570px;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .note {
+    width: 85%;
+  }
+
+  .envelope {
+    transform: scale(.85);
+  }
+
+  .letter {
+    padding: 25px 20px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- floating decorations -->
-  <div class="heart" style="left:10%; animation-delay:0s;">♡</div>
-  <div class="heart" style="left:25%; animation-delay:2s;">♥</div>
-  <div class="heart" style="left:45%; animation-delay:4s;">♡</div>
-  <div class="heart" style="left:70%; animation-delay:1s;">♥</div>
-  <div class="heart" style="left:88%; animation-delay:3s;">♡</div>
+<div class="scrapbook">
 
-  <main class="page">
+  <!-- ================= COVER ================= -->
 
-    <!-- COVER -->
-    <section class="paper">
-      <div class="tape"></div>
+  <section class="page cover">
 
-      <div class="doodle">♡ ⋆｡°✩ 🧸 ✩°｡⋆ ♡</div>
+    <div class="tape one"></div>
 
-      <h1 class="title">
-        Happiest Birthday<br>
-        My Teddy !!!
-      </h1>
+    <div class="sticker flower" style="top:35px; left:30px;">✿</div>
+    <div class="sticker star" style="top:70px; right:35px;">☆</div>
+    <div class="sticker bear" style="bottom:35px; right:35px;">🧸</div>
+    <div class="sticker flower" style="bottom:40px; left:35px;">♡</div>
 
-      <p class="subtitle">
-        a tiny little scrapbook made just for you ♡
-      </p>
+    <div class="bear">🧸</div>
 
-      <p class="tiny">
-        August 30 · 2026
-      </p>
-    </section>
+    <h1>
+      Happiest Birthday<br>
+      My Teddy
+    </h1>
+
+    <p>hope you'll love this :DD</p>
+
+    <p class="date">08 · 30 · 2026 ♡</p>
+
+  </section>
 
 
-    <!-- FOR TEDDY -->
-    <section class="paper">
-      <div class="tape"></div>
+  <!-- ================= FOR TEDDY ================= -->
 
-      <h2>♡ for teddy ♡</h2>
+  <section class="page">
 
-      <div class="doodle">✿ ───── ♡ ───── ✿</div>
+    <div class="tape two"></div>
 
-      <p style="text-align:center; line-height:1.8;">
-        I wanted to make you a little corner of the internet
-        that is just yours.
-        <br><br>
-        So here's a tiny collection of memories,
-        thoughts, and little pieces of my heart
-        that I wanted you to have on your birthday.
-      </p>
-    </section>
+    <div class="sticker flower" style="top:30px; left:25px;">✿</div>
+    <div class="sticker star" style="bottom:30px; right:30px;">☆</div>
+
+    <div class="label">a little something ♡</div>
+
+    <h2>For Teddy</h2>
+
+    <p class="body-text">
+
+      We might be on opposite sides of the world,
+      but I still want to make your birthday a little more special.
+
+      <br><br>
+
+      So here's a tiny collection of memories,
+      thoughts, and little pieces of my heart
+      that I wanted you to have on your birthday.
+
+    </p>
+
+  </section>
 
 
-    <!-- PHOTOS -->
-    <section class="paper">
-      <div class="tape"></div>
+  <!-- ================= PHOTOS ================= -->
 
-      <h2>little pieces of us ♡</h2>
+  <section class="page">
 
-      <div class="photos">
+    <div class="tape one"></div>
 
-        <div class="photo">
-          <img src="photo1.jpg" alt="A memory">
-          <div class="caption">a little memory ♡</div>
+    <div class="sticker bear" style="top:25px; right:25px;">🧸</div>
+
+    <h2>little pieces of us ♡</h2>
+
+    <div class="photo-grid">
+
+      <div class="photo-card">
+        <img src="photo1.jpg" alt="Our first matching profile pictures">
+        <div class="caption">
+          throwback to our first matching pfp
         </div>
-
-        <div class="photo">
-          <img src="photo2.jpg" alt="A memory">
-          <div class="caption">one of my favorites</div>
-        </div>
-
-        <div class="photo">
-          <img src="photo3.jpg" alt="A memory">
-          <div class="caption">♡ you & me ♡</div>
-        </div>
-
-        <div class="photo">
-          <img src="photo4.jpg" alt="A memory">
-          <div class="caption">another little moment</div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- LOVE LETTER -->
-    <section class="paper">
-      <div class="tape"></div>
-
-      <h2>a letter for you 💌</h2>
-
-      <div class="letter">
-
-        Dear Teddy,
-
-        <br><br>
-
-        Happy birthday, my Teddy !!! ♡
-
-        <br><br>
-
-        I don't think I could ever put everything I feel for you
-        into one little letter, but I still wanted to give it a try.
-
-        <br><br>
-
-        I'm really grateful for all the little moments we've shared,
-        the conversations, the laughs, the silly things,
-        and even the moments that weren't so easy.
-
-        <br><br>
-
-        You mean so much to me, and I hope you always remember
-        that you are loved and appreciated.
-
-        <br><br>
-
-        I hope this new year of your life brings you softer days,
-        happier moments, and plenty of reasons to smile.
-
-        <br><br>
-
-        And selfishly, I hope I get to be there for some of them. ♡
-
-        <br><br>
-
-        Happy birthday, Teddy.
-        I love you. 🧸
-
-      </div>
-    </section>
-
-
-    <!-- LITTLE NOTES -->
-    <section class="paper">
-      <div class="tape"></div>
-
-      <h2>little things i love ♡</h2>
-
-      <div class="notes">
-
-        <div class="note">
-          your silly little personality ♡
-        </div>
-
-        <div class="note">
-          the way you make me smile
-        </div>
-
-        <div class="note">
-          simply... you being you 🧸
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- MUSIC -->
-    <section class="paper">
-      <div class="tape"></div>
-
-      <h2>our little song 🎧</h2>
-
-      <div class="doodle">♫ ♡ ♫</div>
-
-      <p style="text-align:center;">
-        because this one reminds me of you.
-      </p>
-
-      <div class="music">
-
-        <!-- Replace the # with your official song link -->
-        <a href="#" target="_blank">
-          ♫ All I Want Is You — Miguel ♫
-        </a>
-
-      </div>
-    </section>
-
-
-    <!-- ENDING -->
-    <section class="paper ending">
-
-      <div class="doodle">♡ 🧸 ♡</div>
-
-      <h2>
-        wishing for more birthday<br>
-        celebrations together 😽
-      </h2>
-
-      <p class="signature">
-        made with lots and lots of love ♡
-      </p>
-
-      <div class="doodle">
-        ⋆｡°✩ ♡ ✩°｡⋆
       </div>
 
-    </section>
+      <div class="photo-card">
+        <img src="photo2.jpg" alt="Teddy copying my pose">
+        <div class="caption">
+          my fav pic of u ofc
+        </div>
+      </div>
 
-  </main>
+      <div class="photo-card">
+        <img src="photo3.jpg" alt="A drawing of us">
+        <div class="caption">
+          a piece of u and me
+        </div>
+      </div>
+
+      <div class="photo-card">
+        <img src="photo4.jpg" alt="A little moment together">
+        <div class="caption">
+          little teddy
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= TOP 3 ================= -->
+
+  <section class="page">
+
+    <div class="sticker star" style="top:30px; left:35px;">☆</div>
+    <div class="sticker flower" style="bottom:30px; right:35px;">♡</div>
+
+    <h2>Top 3 things I love about you ♡</h2>
+
+    <div class="notes">
+
+      <div class="note">
+        how you're<br>
+        so softspoken
+      </div>
+
+      <div class="note">
+        how much of a<br>
+        yapper and nerdy<br>
+        you can get
+      </div>
+
+      <div class="note">
+        simply...<br>
+        you being you 🧸
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= LETTER ================= -->
+
+  <section class="page letter-area">
+
+    <div class="tape two"></div>
+
+    <div class="sticker flower" style="top:30px; left:25px;">♡</div>
+
+    <h2>a little letter for you 💌</h2>
+
+    <p class="click-note">
+      there's something inside...<br>
+      tap the envelope ♡
+    </p>
+
+    <div class="envelope" id="envelope" onclick="openLetter()">
+      <div class="envelope-text">For Teddy ♡</div>
+    </div>
+
+    <div class="letter" id="letter">
+
+      <strong>Dear Teddy,</strong>
+
+      <br><br>
+
+      Happiest birthday, my Teddy !!! ♡
+
+      <br><br>
+
+      I don't think I could ever fit everything I feel for you
+      into one little letter, but I still wanted to give it a try.
+
+      <br><br>
+
+      I'm really grateful for all the little moments we've shared,
+      the conversations, the laughs, the silly things,
+      and everything in between.
+
+      <br><br>
+
+      I hope this new year of your life brings you
+      softer days, happier moments, and plenty of reasons to smile.
+
+      <br><br>
+
+      And selfishly, I hope I get to be there for some of them. ♡
+
+      <br><br>
+
+      Happy birthday, Teddy.
+
+      <br>
+
+      I love you. 🧸
+
+      <br><br>
+
+      <em>— from me, with lots of love ♡</em>
+
+      <button class="letter-close" onclick="closeLetter(event)">
+        fold the letter ♡
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= SONG ================= -->
+
+  <section class="page">
+
+    <div class="tape one"></div>
+
+    <div class="sticker star" style="top:30px; right:35px;">☆</div>
+
+    <h2>your song ♡</h2>
+
+    <p class="body-text">
+      because this song reminds me of you.
+    </p>
+
+    <div class="song-box">
+
+      <h3>All I Want Is You</h3>
+
+      <p>— Miguel ♡</p>
+
+      <!-- Replace # with your Spotify/YouTube link -->
+      <a
+        class="song-button"
+        href="#"
+        target="_blank"
+      >
+        ♫ listen to it ♫
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= END ================= -->
+
+  <section class="page ending">
+
+    <div class="sticker flower" style="top:30px; left:35px;">✿</div>
+    <div class="sticker bear" style="top:30px; right:30px;">🧸</div>
+    <div class="sticker star" style="bottom:35px; left:35px;">☆</div>
+    <div class="sticker flower" style="bottom:30px; right:35px;">♡</div>
+
+    <div class="bear">🧸</div>
+
+    <h2>
+      wishing for more birthday<br>
+      celebrations together 😽
+    </h2>
+
+    <p class="signature">
+      made with lots and lots of love ♡
+    </p>
+
+  </section>
+
+</div>
+
+
+<script>
+
+function openLetter() {
+  const envelope = document.getElementById("envelope");
+  const letter = document.getElementById("letter");
+
+  envelope.classList.add("open");
+
+  setTimeout(() => {
+    letter.classList.add("show");
+
+    letter.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+  }, 500);
+}
+
+
+function closeLetter(event) {
+
+  event.stopPropagation();
+
+  const envelope = document.getElementById("envelope");
+  const letter = document.getElementById("letter");
+
+  letter.classList.remove("show");
+
+  setTimeout(() => {
+    envelope.classList.remove("open");
+  }, 300);
+}
+
+</script>
 
 </body>
 </html>
